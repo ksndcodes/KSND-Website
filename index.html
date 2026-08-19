@@ -48,8 +48,10 @@
     overflow:hidden;
     isolation:isolate;
     background:
+      linear-gradient(180deg, rgba(3,4,4,.48) 0%, rgba(3,4,4,.20) 48%, rgba(3,4,4,.54) 100%),
       radial-gradient(ellipse at 50% 58%, rgba(186,132,51,.08) 0%, rgba(20,22,22,.04) 27%, transparent 58%),
       radial-gradient(ellipse at 50% 100%, rgba(224,177,88,.08), transparent 44%),
+      url("assets/index-observatory-bg.png") center center / cover no-repeat,
       linear-gradient(180deg,#030404 0%,#070909 48%,#030404 100%);
   }
   /* ---------- Hangar architecture ---------- */
@@ -221,16 +223,10 @@
     filter:blur(24px);
   }
 
+  /* Removed the broad floor reflection directly above the CTA.
+     The Enter the System button remains the only intentional foreground glow. */
   .floor-reflection{
-    position:absolute;
-    left:50%;
-    bottom:9%;
-    width:min(720px,68vw);
-    height:150px;
-    transform:translateX(-50%);
-    background:radial-gradient(ellipse,rgba(224,171,73,.16),rgba(224,171,73,.04) 38%,transparent 72%);
-    filter:blur(18px);
-    opacity:.8;
+    display:none;
   }
 
   /* ---------- Atmospheric depth ---------- */
@@ -586,7 +582,10 @@
   }
 
   @media (max-width:680px){
-    .scene{min-height:560px}
+    .scene{
+      min-height:560px;
+      background-position:center center;
+    }
     .brand{top:5%;left:6%;font-size:12px}
     .brand-sub{font-size:8px}
     .status{top:5.3%;right:6%;font-size:8px}
@@ -627,8 +626,7 @@
   border-bottom:1px solid rgba(225,225,215,.07);opacity:.55;
 }
 .hangar-beam{position:absolute;background:linear-gradient(90deg,transparent,rgba(226,226,214,.12),transparent)}
-.hangar-beam.top{top:13%;left:7%;width:86%;height:1px}
-.hangar-beam.mid{top:31%;left:6%;width:88%;height:1px;opacity:.45}
+.hangar-beam.top,.hangar-beam.mid{display:none}
 .hangar-beam.left{top:6%;left:8%;width:1px;height:72%;background:linear-gradient(180deg,transparent,rgba(226,226,214,.13),transparent)}
 .hangar-beam.right{top:6%;right:8%;width:1px;height:72%;background:linear-gradient(180deg,transparent,rgba(226,226,214,.13),transparent)}
 
@@ -747,8 +745,6 @@
     <div class="hangar" aria-hidden="true">
       <div class="hangar-wall"></div>
       <div class="ceiling"></div>
-      <div class="hangar-beam top"></div>
-      <div class="hangar-beam mid"></div>
       <div class="hangar-beam left"></div>
       <div class="hangar-beam right"></div>
       <div class="bay left"><i class="bay-light"></i><i class="bay-light two"></i></div>
@@ -1157,8 +1153,9 @@
               </clipPath>
 </defs>
 
-            <!-- Ambient reactor halo -->
-            <ellipse cx="260" cy="410" rx="180" ry="275" fill="url(#goldGlow)" opacity=".15" filter="url(#softGlow)"/>
+            <!-- Ambient reactor halo intentionally disabled.
+                 The pod should not cast a static gold band into the space above the CTA. -->
+            <ellipse cx="260" cy="410" rx="180" ry="275" fill="url(#goldGlow)" opacity="0"/>
 
             <!-- TOKEN: upper gantry -->
             <use href="#token-gantry" data-token="gantry"/>
@@ -1314,7 +1311,7 @@
 
     document.getElementById('enterSystem').addEventListener('click', () => {
       document.body.dataset.systemEntered = 'true';
-      window.location.href = 'explore.html';
+      window.location.href = 'ksnd_page_02_iteration_04.html';
     });
   </script>
 </body>

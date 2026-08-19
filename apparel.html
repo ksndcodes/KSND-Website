@@ -216,7 +216,7 @@ footer{position:relative;z-index:4;border-top:1px solid var(--line);padding:22px
     <div class="index-section">
       <div class="index-section-label"><span>00</span> SYSTEM MODULES</div>
       <nav class="menu-links global-links" aria-label="Global KSND modules">
-        <a class="global-link" href="#" data-module="commerce">
+        <a class="global-link" href="commerce.html">
           <span>01</span><div><b>COMMERCE</b><small>Cross-border access</small></div><em>→</em>
         </a>
         <a class="global-link" href="#" data-module="fitness">
@@ -228,7 +228,7 @@ footer{position:relative;z-index:4;border-top:1px solid var(--line);padding:22px
         <a class="global-link current" href="apparel.html">
           <span>04</span><div><b>APPAREL</b><small>Wear the standard</small></div><em>→</em>
         </a>
-        <a class="global-link" href="#" data-module="core">
+        <a class="global-link" href="core.html">
           <span>05</span><div><b>CORE</b><small>Philosophy & archive</small></div><em>→</em>
         </a>
       </nav>
@@ -370,22 +370,20 @@ document.querySelectorAll('.filter').forEach(btn=>btn.addEventListener('click',(
   // Global module routes that have not been deployed yet stay visually
   // available without sending the user to a broken page.
   const moduleNames={
-    commerce:'KSND Commerce is not deployed yet.',
     fitness:'KSND Fitness is not deployed yet.',
     journal:'KSND Journal is not deployed yet.'
   };
-  const moduleRoutes={core:'core.html'};
   let noticeTimer;
   document.querySelectorAll('[data-module]').forEach(link=>{
     link.addEventListener('click',e=>{
-      const route=moduleRoutes[link.dataset.module];
-      if(route){ e.preventDefault(); window.location.href=route; return; }
-      e.preventDefault();
-      const msg=moduleNames[link.dataset.module] || 'Module route not deployed yet.';
-      notice.textContent=msg;
-      notice.classList.add('show');
-      clearTimeout(noticeTimer);
-      noticeTimer=setTimeout(()=>notice.classList.remove('show'),2200);
+      const key=link.dataset.module;
+      if(moduleNames[key]){
+        e.preventDefault();
+        notice.textContent=moduleNames[key];
+        notice.classList.add('show');
+        clearTimeout(noticeTimer);
+        noticeTimer=setTimeout(()=>notice.classList.remove('show'),2200);
+      }
     });
   });
 
@@ -406,7 +404,7 @@ document.querySelectorAll('.filter').forEach(btn=>btn.addEventListener('click',(
 
   // Keep the global KSND mark anchored to the Explore the System page.
   const brand=document.querySelector('.brand');
-  if(brand) brand.href='explore.html';
+  if(brand) brand.href='ksnd_page_03_iteration_06.html';
 })();
 </script>
 

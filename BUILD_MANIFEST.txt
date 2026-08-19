@@ -1,0 +1,38 @@
+KSND STABLE BUILD 001
+======================
+
+Canonical entry:
+index.html
+
+Primary flow:
+index.html -> explore.html
+
+Deployed module routes:
+explore.html -> commerce.html
+explore.html -> apparel.html
+explore.html -> core.html
+
+Undeployed modules:
+Fitness
+Journal
+
+Apparel:
+apparel.html -> explore.html (KSND logo)
+apparel.html -> commerce.html (global index)
+apparel.html -> core.html (global index)
+
+Commerce:
+commerce.html -> explore.html
+commerce.html -> index.html
+
+Background dependency:
+The canonical index.html references:
+assets/index-observatory-bg.png
+
+That image was part of the previously deployed Index environment but is not
+available as a binary in the current file set. Keep the same asset at that
+exact path in the GitHub/Netlify deployment so the Observatory background
+continues to render.
+
+Build status:
+STABLE / ROUTING LOCKED / COMMERCE PROTOTYPE

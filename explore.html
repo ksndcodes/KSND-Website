@@ -85,7 +85,7 @@ h1{margin:10px 0 9px;font-size:clamp(30px,4vw,58px);font-weight:400;letter-spaci
     <button data-jump="apparel"><span>04</span> APPAREL <b>→</b></button>
     <button data-jump="core"><span>05</span> CORE <b>→</b></button>
   </div>
-  <div class="index-note">DESTINATION ROUTING WILL ACTIVATE AS MODULES ARE BUILT.</div>
+  <div class="index-note">DEPLOYED ROUTES / COMMERCE · APPAREL · CORE</div>
 </div>
 
 <footer class="bottom"><div class="metrics"><div class="metric"><span>SYSTEM</span><strong>ACTIVE</strong></div><div class="metric"><span>INTEGRITY</span><strong>SECURE</strong></div><div class="metric"><span>SYNC</span><strong>LIVE</strong></div></div><div class="tenets">PRECISION <em>•</em> STEWARDSHIP <em>•</em> MANIFESTATION <em>•</em> LONGEVITY</div><div class="bottom-nav"><button>⌘</button><button>◎</button><button>⌁</button></div></footer>
@@ -98,11 +98,22 @@ const closeIndex=document.getElementById('closeIndex');
 
 systemMenuBtn.addEventListener('click',()=>{const open=systemIndex.classList.toggle('open');systemIndex.setAttribute('aria-hidden',String(!open));});
 closeIndex.addEventListener('click',()=>{systemIndex.classList.remove('open');systemIndex.setAttribute('aria-hidden','true');});
-const moduleRoutes={apparel:'apparel.html',core:'core.html'};
-document.querySelectorAll('[data-jump]').forEach(btn=>btn.addEventListener('click',()=>{const key=btn.dataset.jump;const route=moduleRoutes[key];if(route){window.location.href=route;return;}const target=document.querySelector(`[data-module="${key}"]`);if(target){systemIndex.classList.remove('open');target.animate([{boxShadow:'0 0 0 rgba(217,168,63,0)'},{boxShadow:'0 0 35px rgba(217,168,63,.3)'},{boxShadow:'0 0 0 rgba(217,168,63,0)'}],{duration:700,easing:'ease-out'});}}));
+const indexRoutes={commerce:'commerce.html',apparel:'apparel.html',core:'core.html'};
+document.querySelectorAll('[data-jump]').forEach(btn=>btn.addEventListener('click',()=>{
+  const route=indexRoutes[btn.dataset.jump];
+  if(route){ systemIndex.classList.remove('open'); setTimeout(()=>window.location.href=route,120); }
+}));
 document.addEventListener('click',e=>{if(systemIndex.classList.contains('open')&&!systemIndex.contains(e.target)&&e.target!==systemMenuBtn){systemIndex.classList.remove('open');systemIndex.setAttribute('aria-hidden','true');}});
 addEventListener('pointermove',e=>{glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px'});
-document.querySelectorAll('.module').forEach(card=>card.addEventListener('click',()=>{const route=moduleRoutes[card.dataset.module];if(route){window.location.href=route;return;}card.animate([{transform:'translateY(-5px)'},{transform:'translateY(-8px) scale(1.01)'},{transform:'translateY(-5px)'}],{duration:360,easing:'ease-out'});}));
+const deployedRoutes={commerce:'commerce.html',apparel:'apparel.html',core:'core.html'};
+document.querySelectorAll('.module').forEach(card=>card.addEventListener('click',()=>{
+  card.animate(
+    [{transform:'translateY(-5px)'},{transform:'translateY(-8px) scale(1.01)'},{transform:'translateY(-5px)'}],
+    {duration:360,easing:'ease-out'}
+  );
+  const route=deployedRoutes[card.dataset.module];
+  if(route) setTimeout(()=>window.location.href=route,180);
+}));
 </script>
 </body>
 </html>
