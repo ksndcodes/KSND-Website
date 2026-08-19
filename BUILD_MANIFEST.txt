@@ -1,0 +1,44 @@
+KSND CONNECTED BUILD 002
+=========================
+
+SOURCE
+------
+Current uploaded/root HTML files, consolidated without redesigning the pages.
+
+CANONICAL ROUTING
+-----------------
+index.html
+  -> explore.html
+
+explore.html
+  -> commerce.html
+  -> apparel.html
+  -> core.html
+  -> KSND System Console token -> index.html
+
+commerce.html
+  -> Explore via top-left KSND logo
+  -> Explore via footer "System Index"
+  -> Chamber via footer "The Chamber"
+
+apparel.html
+  -> Explore via top-left KSND logo
+  -> Commerce via system index
+  -> Core via system index
+  -> Fitness / Journal remain intentionally undeployed
+
+core.html
+  -> Explore via "EXPLORE THE SYSTEM"
+
+PRESERVED ASSETS
+----------------
+assets/index-observatory-bg.png
+
+NO VISUAL ENGINEERING
+---------------------
+This pass is routing/consolidation only.
+No new visual engine, layout system, or product logic was introduced.
+
+STAUS
+-----
+CONNECTED / ROUTES LOCKED / READY FOR NEXT ITERATION

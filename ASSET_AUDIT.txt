@@ -1,0 +1,12 @@
+ASSET PATH AUDIT
+
+All local raster/vector asset references are relative to the HTML file.
+
+index.html: assets/index-observatory-bg.png
+explore.html: assets/ksnd_hangar_iteration03.webp
+
+EXPECTED GITHUB ASSETS FOR CHAMBER/EXPLORE:
+assets/index-observatory-bg.png
+assets/ksnd_hangar_iteration03.webp
+
+IMPORTANT: The Explore HTML now explicitly references the hangar image inside assets/.
