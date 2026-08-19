@@ -1,0 +1,29 @@
+KSND MASTER BUILD — CONNECTED ROUTE AUDIT
+
+MASTER PAGES: index.html / explore.html / apparel.html / commerce.html
+
+Expected routing:
+index.html -> explore.html
+explore.html -> index.html, commerce.html, apparel.html
+apparel.html -> explore.html, commerce.html
+commerce.html -> explore.html, index.html
+
+index.html:
+  SCRIPT/ROUTE -> explore.html [OK]
+
+explore.html:
+  LINK -> index.html [OK]
+  LINK -> index.html [OK]
+  SCRIPT/ROUTE -> apparel.html [OK]
+  SCRIPT/ROUTE -> commerce.html [OK]
+
+apparel.html:
+  LINK -> explore.html [OK]
+  LINK -> commerce.html [OK]
+  LINK -> apparel.html [OK]
+  LINK -> explore.html [OK]
+
+commerce.html:
+  LINK -> explore.html [OK]
+  LINK -> explore.html [OK]
+  LINK -> index.html [OK]
